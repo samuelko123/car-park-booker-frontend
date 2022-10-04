@@ -1,0 +1,119 @@
+import React from 'react'
+import moment from 'moment'
+import { useRouter } from 'next/router'
+import { BaseDropdown } from '../../components/Dropdowns'
+import {
+	BackButton,
+	BaseButton,
+} from '../../components/Buttons'
+import {
+	HTTP_METHOD,
+	LIMIT,
+	UI_TEXT,
+} from '../../utils/constants'
+import { useAjaxRequest } from '../../hooks/useAjaxRequest'
+import { ErrorAlert } from '../../components/Alerts'
+import { Stack } from '@mui/material'
+import {
+	BaseTextField,
+	ReadOnlyField,
+} from '../../components/TextFields'
+import { AuthContext } from '../../components/AuthProvider'
+import { BaseLink } from '../../components/Link'
+
+export default function Page() {
+	const router = useRouter()
+
+	const dates = [...Array(LIMIT.AVAILABLE_DAYS_IN_ADVANCE).keys()].map((index) => {
+		const momentObj = moment().add(index + 1, 'days')
+
+		// skip weekend
+		const weekday = momentObj.weekday()
+		if ([0, 6].includes(weekday)) {
+			return null
+		}
+
+		return {
+			label: momentObj.format('DD/MM (ddd)'),
+			value: momentObj.format('YYYY-MM-DD'),
+		}
+	}).filter(elem => !!elem)
+
+	const [date, setDate] = React.useState(router.query?.date || dates[0].value)
+	const [numPlate, setNumPlate] = React.useState('')
+	const [isLicPlateMissing, setIsLicPlateMissing] = React.useState(false)
+	const [errMsg, isLoading, sendRequest] = useAjaxRequest()
+	const { user } = React.useContext(AuthContext)
+
+	React.useEffect(() => {
+		setNumPlate(user?.number_plate || '')
+	}, [user])
+
+	const handleLicPlateChange = (val) => {
+		setNumPlate(val.toUpperCase())
+	}
+
+	const handleSubmit = async () => {
+		if (!numPlate) {
+			setIsLicPlateMissing(true)
+			return
+		} else {
+			setIsLicPlateMissing(false)
+		}
+
+		const request = {
+			url: '/api/tickets',
+			method: HTTP_METHOD.POST,
+			data: {
+				booking_date: date,
+				number_plate: numPlate,
+			},
+		}
+
+		await sendRequest(request, () => {
+			router.push('/')
+		})
+	}
+
+	return (
+		<Stack
+			gap={2}
+			component='form'
+		>
+			<BaseLink href='/'>
+				<BackButton>
+					{UI_TEXT.BACK}
+				</BackButton>
+			</BaseLink>
+			{errMsg && <ErrorAlert>{errMsg}</ErrorAlert>}
+			<ReadOnlyField
+				fullWidth
+				label='username'
+				value={user?.username || ''}
+				InputLabelProps={{ shrink: true }}
+			/>
+			<BaseTextField
+				label='license plate'
+				value={numPlate}
+				onChange={handleLicPlateChange}
+				InputLabelProps={{ shrink: true }}
+				required={true}
+				error={isLicPlateMissing}
+			/>
+			<BaseDropdown
+				label='date'
+				value={date}
+				onChange={setDate}
+				options={dates}
+			/>
+			<BaseButton
+				variant='contained'
+				onClick={handleSubmit}
+				loading={isLoading}
+				type='submit'
+			>
+				{UI_TEXT.BOOK_NOW}
+			</BaseButton>
+		</Stack>
+	)
+}
