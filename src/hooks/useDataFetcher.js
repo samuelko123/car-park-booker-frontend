@@ -22,7 +22,7 @@ export const useDataFetcher = (endpoint) => {
 	} = useSWR(endpoint, fetcher, {
 		revalidateOnFocus: false,
 		revalidateOnMount: true,
-		revalidateOnReconnect: true,
+		revalidateOnReconnect: false,
 		revalidateIfStale: true,
 	})
 
