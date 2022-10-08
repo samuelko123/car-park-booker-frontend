@@ -1,4 +1,5 @@
 import React from 'react'
+import { useDataFetcher } from '../hooks/useDataFetcher'
 
 export const AuthContext = React.createContext({})
 
