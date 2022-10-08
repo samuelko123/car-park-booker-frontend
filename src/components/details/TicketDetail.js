@@ -18,7 +18,7 @@ export const TicketDetail = (props) => {
 				}
 
 				if (field === 'last_run_at' || field === 'created_at') {
-					val = moment().utc(val).format('DD/MM HH:mm')
+					val = moment(val).utc().format('DD/MM HH:mm')
 				}
 
 				return (
