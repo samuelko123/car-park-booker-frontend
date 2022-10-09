@@ -22,11 +22,11 @@ export const UpcomingList = (props) => {
 	} = props
 
 	const now = moment().utcOffset(0, true).startOf('days')
-	const dateObjs = [...Array(LIMIT.AVAILABLE_DAYS_IN_ADVANCE).keys()]
+	const dateObjs = [...Array(LIMIT.AVAILABLE_DAYS_IN_ADVANCE + 1).keys()]
 		.map((index) => {
 			// create object
 			const obj = {
-				date: moment(now).add(index + 1, 'days'),
+				date: moment(now).add(index, 'days'),
 			}
 
 			// skip weekend
