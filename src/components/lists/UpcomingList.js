@@ -68,24 +68,24 @@ export const UpcomingList = (props) => {
 			{
 				dateObjs.map((obj) => {
 					let url
-					if (!!obj.booking_id) {
+					if (obj.booking_id) {
 						url = `/bookings/${obj.booking_id}`
-					} else if (!!obj.ticket_id) {
+					} else if (obj.ticket_id) {
 						url = `/tickets/${obj.ticket_id}`
 					} else {
 						url = `/tickets/create?date=${obj.date.format('YYYY-MM-DD')}`
 					}
 
-					const chipText = !!obj.booking_id ? obj.car_park : obj.status
+					const chipText = obj.booking_id ? obj.car_park : obj.status
 
 					let chipColor
-					if (!!obj.booking_id) {
+					if (obj.booking_id) {
 						chipColor = 'success'
 					}
 					else if (obj.status === JOB_STATUS.FAILED) {
 						chipColor = 'error'
 					}
-					else if (!!obj.status) {
+					else if (obj.status) {
 						chipColor = 'primary'
 					} else {
 						chipColor = undefined
