@@ -16,7 +16,7 @@ import {
 	HTTP_STATUS,
 	UI_TEXT,
 } from '../../utils/constants'
-import { ErrorAlert } from '../../components/Alerts'
+import { BaseAlert } from '../../components/atoms/Alert'
 import { DeleteDialog } from '../../components/Dialogs'
 import { useAjaxRequest } from '../../hooks/useAjaxRequest'
 import { useDataFetcher } from '../../hooks/useDataFetcher'
@@ -56,8 +56,16 @@ export default function Page() {
 				</BaseLink>
 				{isLoading && <CircularProgress size='2rem' />}
 			</Stack>
-			{error && <ErrorAlert>{error?.message || ERROR.UNKNOWN}</ErrorAlert>}
-			{deleteErrMsg && <ErrorAlert>{deleteErrMsg}</ErrorAlert>}
+			{error &&
+				<BaseAlert severity='error'>
+					{error?.message || ERROR.UNKNOWN}
+				</BaseAlert>
+			}
+			{deleteErrMsg &&
+				<BaseAlert severity='error'>
+					{deleteErrMsg}
+				</BaseAlert>
+			}
 			{booking &&
 				<>
 					<Stack

@@ -7,10 +7,7 @@ import {
 	UI_TEXT,
 } from '../utils/constants'
 import { useAjaxRequest } from '../hooks/useAjaxRequest'
-import {
-	ErrorAlert,
-	InfoAlert,
-} from './Alerts'
+import { BaseAlert } from './atoms/Alert'
 import { Stack } from '@mui/material'
 
 export const LoginWidget = () => {
@@ -37,10 +34,10 @@ export const LoginWidget = () => {
 
 	return (
 		<>
-			{errMsg && <ErrorAlert>{errMsg}</ErrorAlert>}
-			<InfoAlert>
+			{errMsg && <BaseAlert severity='error'>{errMsg}</BaseAlert>}
+			<BaseAlert severity='info'>
 				{`Please login with your ${process.env.NEXT_PUBLIC_PARKING_PROVIDER} credentials`}
-			</InfoAlert>
+			</BaseAlert>
 			<Stack gap={2} component='form'>
 				<BaseTextField
 					label='Username'

@@ -4,7 +4,7 @@ import {
 	Stack,
 } from '@mui/material'
 import { UpcomingList } from '../components/lists/UpcomingList'
-import { ErrorAlert } from '../components/Alerts'
+import { BaseAlert } from '../components/atoms/Alert'
 import { ERROR } from '../utils/constants'
 import { useDataFetcher } from '../hooks/useDataFetcher'
 import { CreateButton } from '../components/Buttons'
@@ -32,8 +32,8 @@ export default function Page() {
 
 	return (
 		<>
-			{errBookings && <ErrorAlert>{errBookings?.message || ERROR.UNKNOWN}</ErrorAlert>}
-			{errTickets && <ErrorAlert>{errTickets?.message || ERROR.UNKNOWN}</ErrorAlert>}
+			{errBookings && <BaseAlert severity='error'>{errBookings?.message || ERROR.UNKNOWN}</BaseAlert>}
+			{errTickets && <BaseAlert severity='error'>{errTickets?.message || ERROR.UNKNOWN}</BaseAlert>}
 			<Stack flexDirection='row' gap={2}>
 				<BaseLink href='/tickets/create'>
 					<CreateButton variant='outlined'>Book Now</CreateButton>

@@ -10,7 +10,7 @@ import {
 	BaseButton,
 	DeleteButton,
 } from './Buttons'
-import { ErrorAlert } from './Alerts'
+import { BaseAlert } from './atoms/Alert'
 import { UI_TEXT } from '../utils/constants'
 
 export const DeleteDialog = (props) => {
@@ -41,7 +41,7 @@ export const DeleteDialog = (props) => {
 			<DialogTitle>
 				{UI_TEXT.DELETE}
 			</DialogTitle>
-			{error && <ErrorAlert>{error?.message}</ErrorAlert>}
+			{error && <BaseAlert severity='error'>{error?.message}</BaseAlert>}
 			<DialogContent>
 				<DialogContentText>
 					Are you sure you want to delete?

@@ -12,7 +12,7 @@ import {
 	UI_TEXT,
 } from '../../utils/constants'
 import { useAjaxRequest } from '../../hooks/useAjaxRequest'
-import { ErrorAlert } from '../../components/Alerts'
+import { BaseAlert } from '../../components/atoms/Alert'
 import { Stack } from '@mui/material'
 import {
 	BaseTextField,
@@ -85,7 +85,7 @@ export default function Page() {
 					{UI_TEXT.BACK}
 				</BackButton>
 			</BaseLink>
-			{errMsg && <ErrorAlert>{errMsg}</ErrorAlert>}
+			{errMsg && <BaseAlert severity='error'>{errMsg}</BaseAlert>}
 			<ReadOnlyField
 				fullWidth
 				label='username'

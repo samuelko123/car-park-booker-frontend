@@ -14,7 +14,7 @@ import {
 } from '../utils/constants'
 import LogoutIcon from '@mui/icons-material/Logout'
 import { useAjaxRequest } from '../hooks/useAjaxRequest'
-import { ErrorAlert } from './Alerts'
+import { BaseAlert } from './atoms/Alert'
 import { AuthContext } from './AuthProvider'
 
 export const AppBar = (props) => {
@@ -82,7 +82,7 @@ export const AppBar = (props) => {
 					</Tooltip>
 				}
 			</MuiAppBar>
-			{errMsg && <ErrorAlert>{errMsg}</ErrorAlert>}
+			{errMsg && <BaseAlert severity='error'>{errMsg}</BaseAlert>}
 		</>
 	)
 }
