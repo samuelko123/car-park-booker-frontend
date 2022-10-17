@@ -4,7 +4,10 @@ import { BaseTextField } from './TextFields'
 import { SubmitButton } from './atoms/Buttons'
 import { HTTP_METHOD } from '../utils/constants'
 import { useAjaxRequest } from '../hooks/useAjaxRequest'
-import { BaseAlert } from './atoms/Alert'
+import {
+	ErrorAlert,
+	InfoAlert,
+} from './atoms/Alerts'
 import { Stack } from '@mui/material'
 
 export const LoginWidget = () => {
@@ -31,10 +34,14 @@ export const LoginWidget = () => {
 
 	return (
 		<>
-			{errMsg && <BaseAlert severity='error'>{errMsg}</BaseAlert>}
-			<BaseAlert severity='info'>
+			{errMsg &&
+				<ErrorAlert>
+					{errMsg}
+				</ErrorAlert>
+			}
+			<InfoAlert>
 				{`Please login with your ${process.env.NEXT_PUBLIC_PARKING_PROVIDER} credentials`}
-			</BaseAlert>
+			</InfoAlert>
 			<Stack gap={2} component='form'>
 				<BaseTextField
 					label='Username'

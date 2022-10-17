@@ -14,7 +14,10 @@ import {
 	HTTP_METHOD,
 	HTTP_STATUS,
 } from '../../utils/constants'
-import { BaseAlert } from '../../components/atoms/Alert'
+import {
+	ErrorAlert,
+	InfoAlert,
+} from '../../components/atoms/Alerts'
 import { useAjaxRequest } from '../../hooks/useAjaxRequest'
 import { LogList } from '../../components/lists/LogList'
 import { DeleteDialog } from '../../components/Dialogs'
@@ -54,8 +57,16 @@ export default function Page() {
 				</BaseLink>
 				{isLoading && <CircularProgress size='2rem' />}
 			</Stack>
-			{error && <BaseAlert severity='error'>{error?.message || ERROR.UNKNOWN}</BaseAlert>}
-			{deleteErrMsg && <BaseAlert severity='error'>{deleteErrMsg}</BaseAlert>}
+			{error &&
+				<ErrorAlert>
+					{error?.message || ERROR.UNKNOWN}
+				</ErrorAlert>
+			}
+			{deleteErrMsg &&
+				<ErrorAlert>
+					{deleteErrMsg}
+				</ErrorAlert>
+			}
 			{data &&
 				<>
 					<DeleteButton
@@ -71,7 +82,9 @@ export default function Page() {
 				</>
 			}
 			{data?.status === 'Active' &&
-				<BaseAlert severity='info'>It will keep trying every 30 minutes.</BaseAlert>
+				<InfoAlert>
+					It will keep trying every 30 minutes.
+				</InfoAlert>
 			}
 			{data?.logs && data.logs.length > 0 &&
 				<LogList data={data?.logs} />

@@ -11,7 +11,7 @@ import {
 	LIMIT,
 } from '../../utils/constants'
 import { useAjaxRequest } from '../../hooks/useAjaxRequest'
-import { BaseAlert } from '../../components/atoms/Alert'
+import { ErrorAlert } from '../../components/atoms/Alerts'
 import { Stack } from '@mui/material'
 import {
 	BaseTextField,
@@ -82,7 +82,11 @@ export default function Page() {
 			<BaseLink href='/'>
 				<BackButton />
 			</BaseLink>
-			{errMsg && <BaseAlert severity='error'>{errMsg}</BaseAlert>}
+			{errMsg &&
+				<ErrorAlert>
+					{errMsg}
+				</ErrorAlert>
+			}
 			<ReadOnlyField
 				fullWidth
 				label='username'

@@ -15,7 +15,7 @@ import {
 	HTTP_METHOD,
 	HTTP_STATUS,
 } from '../../utils/constants'
-import { BaseAlert } from '../../components/atoms/Alert'
+import { ErrorAlert } from '../../components/atoms/Alerts'
 import { DeleteDialog } from '../../components/Dialogs'
 import { useAjaxRequest } from '../../hooks/useAjaxRequest'
 import { useDataFetcher } from '../../hooks/useDataFetcher'
@@ -54,14 +54,14 @@ export default function Page() {
 				{isLoading && <CircularProgress size='2rem' />}
 			</Stack>
 			{error &&
-				<BaseAlert severity='error'>
+				<ErrorAlert>
 					{error?.message || ERROR.UNKNOWN}
-				</BaseAlert>
+				</ErrorAlert>
 			}
 			{deleteErrMsg &&
-				<BaseAlert severity='error'>
+				<ErrorAlert>
 					{deleteErrMsg}
-				</BaseAlert>
+				</ErrorAlert>
 			}
 			{booking &&
 				<>

@@ -10,7 +10,7 @@ import {
 	CancelButton,
 	DeleteButton,
 } from './atoms/Buttons'
-import { BaseAlert } from './atoms/Alert'
+import { ErrorAlert } from './atoms/Alerts'
 
 export const DeleteDialog = (props) => {
 	const {
@@ -40,7 +40,11 @@ export const DeleteDialog = (props) => {
 			<DialogTitle>
 				Delete
 			</DialogTitle>
-			{error && <BaseAlert severity='error'>{error?.message}</BaseAlert>}
+			{error &&
+				<ErrorAlert>
+					{error?.message}
+				</ErrorAlert>
+			}
 			<DialogContent>
 				<DialogContentText>
 					Are you sure you want to delete?
