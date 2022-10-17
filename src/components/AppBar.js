@@ -8,10 +8,7 @@ import {
 	Typography,
 } from '@mui/material'
 import { BaseLink } from './Link'
-import {
-	HTTP_METHOD,
-	UI_TEXT,
-} from '../utils/constants'
+import { HTTP_METHOD } from '../utils/constants'
 import LogoutIcon from '@mui/icons-material/Logout'
 import { useAjaxRequest } from '../hooks/useAjaxRequest'
 import { BaseAlert } from './atoms/Alert'
@@ -70,7 +67,7 @@ export const AppBar = (props) => {
 					/>
 				}
 				{user && !isLoading &&
-					<Tooltip title={UI_TEXT.LOGOUT}>
+					<Tooltip title='Logout'>
 						<IconButton
 							onClick={handleSubmit}
 							sx={{

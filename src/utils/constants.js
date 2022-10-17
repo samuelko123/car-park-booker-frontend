@@ -8,15 +8,6 @@ export const HTTP_STATUS = {
 	OK: 200,
 }
 
-export const UI_TEXT = {
-	BACK: 'Back',
-	BOOK_NOW: 'Book Now',
-	CANCEL: 'Cancel',
-	DELETE: 'Delete',
-	LOGIN: 'Login',
-	LOGOUT: 'Logout',
-}
-
 export const JOB_STATUS = {
 	ACTIVE: 'Active',
 	EXPIRED: 'Expired',
