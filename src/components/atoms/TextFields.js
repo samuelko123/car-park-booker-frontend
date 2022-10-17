@@ -6,7 +6,7 @@ export const BaseTextField = (props) => {
 		label,
 		value,
 		onChange,
-		...textFieldProp
+		...otherProps
 	} = props
 
 	const handleChange = (e) => {
@@ -23,7 +23,7 @@ export const BaseTextField = (props) => {
 			inputProps={{
 				autoComplete: 'password',
 			}}
-			{...textFieldProp}
+			{...otherProps}
 		/>
 	)
 }
@@ -32,7 +32,7 @@ export const ReadOnlyField = (props) => {
 	const {
 		label,
 		value,
-		...textFieldProp
+		...otherProps
 	} = props
 
 	return (
@@ -42,7 +42,7 @@ export const ReadOnlyField = (props) => {
 			inputProps={{
 				readOnly: true,
 			}}
-			{...textFieldProp}
+			{...otherProps}
 		/>
 	)
 }

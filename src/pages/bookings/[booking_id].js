@@ -5,7 +5,7 @@ import {
 	DeleteButton,
 } from '../../components/atoms/Buttons'
 import { BaseLink } from '../../components/atoms/Links'
-import { ReadOnlyField } from '../../components/TextFields'
+import { ReadOnlyField } from '../../components/atoms/TextFields'
 import {
 	CircularProgress,
 	Stack,

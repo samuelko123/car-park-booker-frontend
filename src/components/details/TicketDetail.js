@@ -1,6 +1,6 @@
 import React from 'react'
 import moment from 'moment'
-import { ReadOnlyField } from '../../components/TextFields'
+import { ReadOnlyField } from '../atoms/TextFields'
 import { Stack } from '@mui/material'
 
 export const TicketDetail = (props) => {

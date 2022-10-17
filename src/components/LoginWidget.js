@@ -1,6 +1,6 @@
 import React from 'react'
 import { useRouter } from 'next/router'
-import { BaseTextField } from './TextFields'
+import { BaseTextField } from './atoms/TextFields'
 import { SubmitButton } from './atoms/Buttons'
 import { HTTP_METHOD } from '../utils/constants'
 import { useAjaxRequest } from '../hooks/useAjaxRequest'

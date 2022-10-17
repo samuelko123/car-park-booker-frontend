@@ -16,7 +16,7 @@ import { Stack } from '@mui/material'
 import {
 	BaseTextField,
 	ReadOnlyField,
-} from '../../components/TextFields'
+} from '../../components/atoms/TextFields'
 import { AuthContext } from '../../components/AuthProvider'
 import { BaseLink } from '../../components/atoms/Links'
 
