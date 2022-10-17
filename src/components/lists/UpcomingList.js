@@ -7,7 +7,7 @@ import {
 	ListItemButton,
 	ListItemText,
 } from '@mui/material'
-import { BaseListItem } from '../ListItem'
+import { BaseListItem } from '../atoms/ListItems'
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos'
 import {
 	JOB_STATUS,

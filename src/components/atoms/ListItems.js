@@ -4,15 +4,15 @@ import { ListItem } from '@mui/material'
 export const BaseListItem = React.forwardRef((props, ref) => {
 	const {
 		children,
-		...listItemProps
+		...otherProps
 	} = props
 
 	return (
 		<ListItem
+			ref={ref}
+			{...otherProps}
 			disablePadding
 			divider
-			ref={ref}
-			{...listItemProps}
 		>
 			{children}
 		</ListItem>

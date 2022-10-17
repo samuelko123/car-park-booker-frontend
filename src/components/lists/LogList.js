@@ -5,7 +5,7 @@ import {
 	List,
 	ListItemText,
 } from '@mui/material'
-import { BaseListItem } from '../ListItem'
+import { BaseListItem } from '../atoms/ListItems'
 
 export const LogList = (props) => {
 	const {
@@ -18,7 +18,9 @@ export const LogList = (props) => {
 				<List>
 					<Divider />
 					{data.map((log, index) => (
-						<BaseListItem key={index} alignItems='flex-start'>
+						<BaseListItem
+							key={index}
+						>
 							<ListItemText
 								primary={moment(log.timestamp).format('DD/MM HH:mm')}
 								sx={{ flex: 3 }}
