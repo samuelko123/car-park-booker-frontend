@@ -1,8 +1,6 @@
 import React from 'react'
-import {
-	MenuItem,
-	TextField,
-} from '@mui/material'
+import { BaseMenuItem } from '../atoms/MenuItem'
+import { BaseTextField } from '../atoms/TextFields'
 
 export const BaseDropdown = (props) => {
 	const {
@@ -13,16 +11,11 @@ export const BaseDropdown = (props) => {
 	} = props
 
 	return (
-		<TextField
+		<BaseTextField
 			select
-			size='small'
 			value={value}
 			label={label}
-			onChange={(e) => onChange(e.target.value)}
-			sx={{
-				alignSelf: 'flex-start',
-				minWidth: theme => theme.spacing(20),
-			}}
+			onChange={(val) => onChange(val)}
 		>
 			{
 				options.map(option => {
@@ -31,16 +24,15 @@ export const BaseDropdown = (props) => {
 					}
 
 					return (
-						<MenuItem
+						<BaseMenuItem
 							key={option.value}
 							value={option.value}
-							disableRipple
 						>
 							{option.label}
-						</MenuItem>
+						</BaseMenuItem>
 					)
 				})
 			}
-		</TextField>
+		</BaseTextField>
 	)
 }

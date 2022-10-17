@@ -1,7 +1,7 @@
 import React from 'react'
 import moment from 'moment'
 import { useRouter } from 'next/router'
-import { BaseDropdown } from '../../components/Dropdowns'
+import { BaseDropdown } from '../../components/molecules/Dropdowns'
 import {
 	BackButton,
 	SubmitButton,
