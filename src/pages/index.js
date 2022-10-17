@@ -7,7 +7,7 @@ import { UpcomingList } from '../components/lists/UpcomingList'
 import { BaseAlert } from '../components/atoms/Alert'
 import { ERROR } from '../utils/constants'
 import { useDataFetcher } from '../hooks/useDataFetcher'
-import { CreateButton } from '../components/Buttons'
+import { CreateButton } from '../components/atoms/Buttons'
 import { BaseLink } from '../components/Link'
 
 export default function Page() {
@@ -36,7 +36,9 @@ export default function Page() {
 			{errTickets && <BaseAlert severity='error'>{errTickets?.message || ERROR.UNKNOWN}</BaseAlert>}
 			<Stack flexDirection='row' gap={2}>
 				<BaseLink href='/tickets/create'>
-					<CreateButton variant='outlined'>Book Now</CreateButton>
+					<CreateButton>
+						Book Now
+					</CreateButton>
 				</BaseLink>
 				{
 					(isLoadingBookings || isLoadingTickets) &&

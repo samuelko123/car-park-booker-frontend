@@ -3,7 +3,7 @@ import { useRouter } from 'next/router'
 import {
 	BackButton,
 	DeleteButton,
-} from '../../components/Buttons'
+} from '../../components/atoms/Buttons'
 import { BaseLink } from '../../components/Link'
 import { ReadOnlyField } from '../../components/TextFields'
 import {
@@ -14,7 +14,6 @@ import {
 	ERROR,
 	HTTP_METHOD,
 	HTTP_STATUS,
-	UI_TEXT,
 } from '../../utils/constants'
 import { BaseAlert } from '../../components/atoms/Alert'
 import { DeleteDialog } from '../../components/Dialogs'
@@ -50,9 +49,7 @@ export default function Page() {
 		<Stack gap={2}>
 			<Stack flexDirection='row' gap={2}>
 				<BaseLink href='/'>
-					<BackButton>
-						{UI_TEXT.BACK}
-					</BackButton>
+					<BackButton />
 				</BaseLink>
 				{isLoading && <CircularProgress size='2rem' />}
 			</Stack>
@@ -75,9 +72,7 @@ export default function Page() {
 						<DeleteButton
 							variant='outlined'
 							onClick={() => { setOpenModal(true) }}
-						>
-							{UI_TEXT.DELETE}
-						</DeleteButton>
+						/>
 						<DeleteDialog
 							open={openModal}
 							onConfirm={handleDelete}

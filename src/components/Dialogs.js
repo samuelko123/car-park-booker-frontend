@@ -7,11 +7,10 @@ import {
 	DialogTitle,
 } from '@mui/material'
 import {
-	BaseButton,
+	CancelButton,
 	DeleteButton,
-} from './Buttons'
+} from './atoms/Buttons'
 import { BaseAlert } from './atoms/Alert'
-import { UI_TEXT } from '../utils/constants'
 
 export const DeleteDialog = (props) => {
 	const {
@@ -39,7 +38,7 @@ export const DeleteDialog = (props) => {
 			onClose={handleClose}
 		>
 			<DialogTitle>
-				{UI_TEXT.DELETE}
+				Delete
 			</DialogTitle>
 			{error && <BaseAlert severity='error'>{error?.message}</BaseAlert>}
 			<DialogContent>
@@ -48,15 +47,14 @@ export const DeleteDialog = (props) => {
 				</DialogContentText>
 			</DialogContent>
 			<DialogActions>
-				<BaseButton onClick={handleClose}>
-					{UI_TEXT.CANCEL}
-				</BaseButton>
+				<CancelButton
+					onClick={handleClose}
+				/>
 				<DeleteButton
+					variant='contained'
 					onClick={handleConfirm}
 					loading={isLoading}
-				>
-					{UI_TEXT.DELETE}
-				</DeleteButton>
+				/>
 			</DialogActions>
 		</Dialog>
 	)

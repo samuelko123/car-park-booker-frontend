@@ -4,12 +4,11 @@ import { useRouter } from 'next/router'
 import { BaseDropdown } from '../../components/Dropdowns'
 import {
 	BackButton,
-	BaseButton,
-} from '../../components/Buttons'
+	SubmitButton,
+} from '../../components/atoms/Buttons'
 import {
 	HTTP_METHOD,
 	LIMIT,
-	UI_TEXT,
 } from '../../utils/constants'
 import { useAjaxRequest } from '../../hooks/useAjaxRequest'
 import { BaseAlert } from '../../components/atoms/Alert'
@@ -81,9 +80,7 @@ export default function Page() {
 			component='form'
 		>
 			<BaseLink href='/'>
-				<BackButton>
-					{UI_TEXT.BACK}
-				</BackButton>
+				<BackButton />
 			</BaseLink>
 			{errMsg && <BaseAlert severity='error'>{errMsg}</BaseAlert>}
 			<ReadOnlyField
@@ -106,14 +103,12 @@ export default function Page() {
 				onChange={setDate}
 				options={dates}
 			/>
-			<BaseButton
-				variant='contained'
+			<SubmitButton
 				onClick={handleSubmit}
 				loading={isLoading}
-				type='submit'
 			>
-				{UI_TEXT.BOOK_NOW}
-			</BaseButton>
+				Book Now
+			</SubmitButton>
 		</Stack>
 	)
 }

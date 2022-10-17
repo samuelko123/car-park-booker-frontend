@@ -1,11 +1,8 @@
 import React from 'react'
 import { useRouter } from 'next/router'
 import { BaseTextField } from './TextFields'
-import { BaseButton } from './Buttons'
-import {
-	HTTP_METHOD,
-	UI_TEXT,
-} from '../utils/constants'
+import { SubmitButton } from './atoms/Buttons'
+import { HTTP_METHOD } from '../utils/constants'
 import { useAjaxRequest } from '../hooks/useAjaxRequest'
 import { BaseAlert } from './atoms/Alert'
 import { Stack } from '@mui/material'
@@ -50,14 +47,12 @@ export const LoginWidget = () => {
 					value={password}
 					onChange={setPassword}
 				/>
-				<BaseButton
-					variant='contained'
+				<SubmitButton
 					onClick={handleSubmit}
 					loading={isLoading}
-					type='submit'
 				>
-					{UI_TEXT.LOGIN}
-				</BaseButton>
+					Login
+				</SubmitButton>
 			</Stack>
 		</>
 	)
