@@ -17,7 +17,7 @@ import {
 	BaseTextField,
 	ReadOnlyField,
 } from '../../components/atoms/TextFields'
-import { AuthContext } from '../../components/AuthProvider'
+import { AuthContext } from '../../components/organisms/AuthProvider'
 import { BaseLink } from '../../components/atoms/Links'
 
 export default function Page() {

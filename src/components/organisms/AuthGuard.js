@@ -1,5 +1,5 @@
 import React from 'react'
-import { AuthContext } from '../AuthProvider'
+import { AuthContext } from './AuthProvider'
 import { LoginForm } from './LoginForm'
 import { BaseSpinner } from '../atoms/Spinner'
 import { useLogin } from '../../hooks/useLogin'

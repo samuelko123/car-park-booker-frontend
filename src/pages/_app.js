@@ -10,14 +10,16 @@ import {
 } from '@mui/material'
 import { AppBar } from '../components/AppBar'
 import { AuthGuard } from '../components/organisms/AuthGuard'
-import { AuthProvider } from '../components/AuthProvider'
+import { AuthProvider } from '../components/organisms/AuthProvider'
 
 export const AppWrapper = (props) => {
 	const { children } = props
 
 	return (
 		<ThemeProvider theme={theme}>
-			<AuthProvider>
+			<AuthProvider
+				endpoint='/api/users/me'
+			>
 				<Head>
 					<title>{process.env.NEXT_PUBLIC_APP_TITLE}</title>
 					<link rel='icon' href='/favicon.ico' />

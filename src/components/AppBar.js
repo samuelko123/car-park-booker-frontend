@@ -11,7 +11,7 @@ import { HTTP_METHOD } from '../utils/constants'
 import LogoutIcon from '@mui/icons-material/Logout'
 import { useAjaxRequest } from '../hooks/useAjaxRequest'
 import { ErrorAlert } from './atoms/Alerts'
-import { AuthContext } from './AuthProvider'
+import { AuthContext } from './organisms/AuthProvider'
 import { BaseSpinner } from './atoms/Spinner'
 
 export const AppBar = (props) => {
