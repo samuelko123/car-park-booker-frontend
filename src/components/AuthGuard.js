@@ -1,10 +1,10 @@
 import React from 'react'
 import { useRouter } from 'next/router'
-import { CircularProgress } from '@mui/material'
 import { AuthContext } from './AuthProvider'
 import { LoginForm } from './organisms/LoginForm'
 import { useAjaxRequest } from '../hooks/useAjaxRequest'
 import { HTTP_METHOD } from '../utils/constants'
+import { BaseSpinner } from './atoms/Spinner'
 
 export const AuthGuard = (props) => {
 	const { children } = props
@@ -35,7 +35,7 @@ export const AuthGuard = (props) => {
 	}
 
 	if (loading) {
-		return <CircularProgress />
+		return <BaseSpinner />
 	}
 
 	if (error) {

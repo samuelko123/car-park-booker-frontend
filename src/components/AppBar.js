@@ -1,7 +1,6 @@
 import React from 'react'
 import { useRouter } from 'next/router'
 import {
-	CircularProgress,
 	IconButton,
 	AppBar as MuiAppBar,
 	Tooltip,
@@ -13,6 +12,7 @@ import LogoutIcon from '@mui/icons-material/Logout'
 import { useAjaxRequest } from '../hooks/useAjaxRequest'
 import { ErrorAlert } from './atoms/Alerts'
 import { AuthContext } from './AuthProvider'
+import { BaseSpinner } from './atoms/Spinner'
 
 export const AppBar = (props) => {
 	const {
@@ -62,9 +62,7 @@ export const AppBar = (props) => {
 					</Typography>
 				</BaseLink>
 				{isLoading &&
-					<CircularProgress
-						sx={{ color: 'inherit' }}
-					/>
+					<BaseSpinner color='inherit' />
 				}
 				{user && !isLoading &&
 					<Tooltip title='Logout'>

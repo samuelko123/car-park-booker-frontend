@@ -6,10 +6,7 @@ import {
 } from '../../components/atoms/Buttons'
 import { BaseLink } from '../../components/atoms/Links'
 import { ReadOnlyField } from '../../components/atoms/TextFields'
-import {
-	CircularProgress,
-	Stack,
-} from '@mui/material'
+import { Stack } from '@mui/material'
 import {
 	ERROR,
 	HTTP_METHOD,
@@ -19,6 +16,7 @@ import { ErrorAlert } from '../../components/atoms/Alerts'
 import { DeleteDialog } from '../../components/molecules/Dialogs'
 import { useAjaxRequest } from '../../hooks/useAjaxRequest'
 import { useDataFetcher } from '../../hooks/useDataFetcher'
+import { BaseSpinner } from '../../components/atoms/Spinner'
 
 export default function Page() {
 	const router = useRouter()
@@ -51,7 +49,9 @@ export default function Page() {
 				<BaseLink href='/'>
 					<BackButton />
 				</BaseLink>
-				{isLoading && <CircularProgress size='2rem' />}
+				{isLoading &&
+					<BaseSpinner />
+				}
 			</Stack>
 			{error &&
 				<ErrorAlert>

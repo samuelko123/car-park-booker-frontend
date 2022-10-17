@@ -1,14 +1,12 @@
 import React from 'react'
-import {
-	CircularProgress,
-	Stack,
-} from '@mui/material'
+import { Stack } from '@mui/material'
 import { UpcomingList } from '../components/lists/UpcomingList'
 import { ErrorAlert } from '../components/atoms/Alerts'
 import { ERROR } from '../utils/constants'
 import { useDataFetcher } from '../hooks/useDataFetcher'
 import { CreateButton } from '../components/atoms/Buttons'
 import { BaseLink } from '../components/atoms/Links'
+import { BaseSpinner } from '../components/atoms/Spinner'
 
 export default function Page() {
 	const {
@@ -27,7 +25,7 @@ export default function Page() {
 		bookings === undefined ||
 		tickets === undefined
 	) {
-		return <CircularProgress />
+		return <BaseSpinner />
 	}
 
 	return (
@@ -48,9 +46,8 @@ export default function Page() {
 						Book Now
 					</CreateButton>
 				</BaseLink>
-				{
-					(isLoadingBookings || isLoadingTickets) &&
-					<CircularProgress size='2rem' />
+				{(isLoadingBookings || isLoadingTickets) &&
+					<BaseSpinner />
 				}
 			</Stack>
 			<UpcomingList

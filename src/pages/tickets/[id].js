@@ -5,10 +5,7 @@ import {
 	DeleteButton,
 } from '../../components/atoms/Buttons'
 import { BaseLink } from '../../components/atoms/Links'
-import {
-	CircularProgress,
-	Stack,
-} from '@mui/material'
+import { Stack } from '@mui/material'
 import {
 	ERROR,
 	HTTP_METHOD,
@@ -23,6 +20,7 @@ import { LogList } from '../../components/lists/LogList'
 import { DeleteDialog } from '../../components/molecules/Dialogs'
 import { useDataFetcher } from '../../hooks/useDataFetcher'
 import { TicketDetail } from '../../components/details/TicketDetail'
+import { BaseSpinner } from '../../components/atoms/Spinner'
 
 export default function Page() {
 	const router = useRouter()
@@ -55,7 +53,9 @@ export default function Page() {
 				<BaseLink href='/'>
 					<BackButton />
 				</BaseLink>
-				{isLoading && <CircularProgress size='2rem' />}
+				{isLoading &&
+					<BaseSpinner />
+				}
 			</Stack>
 			{error &&
 				<ErrorAlert>
