@@ -3,6 +3,8 @@ import LoadingButton from '@mui/lab/LoadingButton'
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew'
 import DeleteIcon from '@mui/icons-material/Delete'
 import AddIcon from '@mui/icons-material/Add'
+import LogoutIcon from '@mui/icons-material/Logout'
+import { IconButton } from '@mui/material'
 
 const BaseButton = React.forwardRef((props, ref) => {
 	return (
@@ -99,5 +101,16 @@ export const SubmitButton = React.forwardRef((props, ref) => {
 		>
 			{children}
 		</BaseButton>
+	)
+})
+
+export const LogoutButton = React.forwardRef((props, ref) => {
+	return (
+		<IconButton
+			ref={ref}
+			{...props}
+		>
+			<LogoutIcon />
+		</IconButton>
 	)
 })

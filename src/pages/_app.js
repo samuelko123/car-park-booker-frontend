@@ -8,12 +8,15 @@ import {
 	CssBaseline,
 	Stack,
 } from '@mui/material'
-import { AppBar } from '../components/AppBar'
+import { AppBar } from '../components/organisms/AppBar'
 import { AuthGuard } from '../components/organisms/AuthGuard'
 import { AuthProvider } from '../components/organisms/AuthProvider'
+import { useLogout } from '../hooks/useLogout'
 
 export const AppWrapper = (props) => {
 	const { children } = props
+
+	const { logout } = useLogout('/api/users/logout')
 
 	return (
 		<ThemeProvider theme={theme}>
@@ -25,7 +28,10 @@ export const AppWrapper = (props) => {
 					<link rel='icon' href='/favicon.ico' />
 				</Head>
 				<CssBaseline />
-				<AppBar title={process.env.NEXT_PUBLIC_APP_TITLE} />
+				<AppBar
+					title={process.env.NEXT_PUBLIC_APP_TITLE}
+					logout={logout}
+				/>
 				<Stack
 					component='main'
 					gap={2}
