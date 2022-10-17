@@ -4,12 +4,13 @@ import { Alert } from '@mui/material'
 const BaseAlert = React.forwardRef((props, ref) => {
 	const {
 		children,
+		...otherProps
 	} = props
 
 	return (
 		<Alert
 			ref={ref}
-			{...props}
+			{...otherProps}
 			sx={{
 				display: 'inline-flex',
 				width: 'fit-content',
