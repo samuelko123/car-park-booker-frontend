@@ -9,7 +9,7 @@ import {
 	Stack,
 } from '@mui/material'
 import { AppBar } from '../components/AppBar'
-import { AuthGuard } from '../components/AuthGuard'
+import { AuthGuard } from '../components/organisms/AuthGuard'
 import { AuthProvider } from '../components/AuthProvider'
 
 export const AppWrapper = (props) => {
@@ -33,7 +33,9 @@ export const AppWrapper = (props) => {
 						margin: 'auto',
 					}}
 				>
-					<AuthGuard>
+					<AuthGuard
+						endpoint='/api/users/login'
+					>
 						{children}
 					</AuthGuard>
 				</Stack>
