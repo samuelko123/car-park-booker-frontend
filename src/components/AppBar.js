@@ -7,7 +7,7 @@ import {
 	Tooltip,
 	Typography,
 } from '@mui/material'
-import { BaseLink } from './Link'
+import { BaseLink } from './atoms/Links'
 import { HTTP_METHOD } from '../utils/constants'
 import LogoutIcon from '@mui/icons-material/Logout'
 import { useAjaxRequest } from '../hooks/useAjaxRequest'

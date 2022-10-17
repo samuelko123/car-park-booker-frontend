@@ -4,7 +4,7 @@ import {
 	BackButton,
 	DeleteButton,
 } from '../../components/atoms/Buttons'
-import { BaseLink } from '../../components/Link'
+import { BaseLink } from '../../components/atoms/Links'
 import { ReadOnlyField } from '../../components/TextFields'
 import {
 	CircularProgress,

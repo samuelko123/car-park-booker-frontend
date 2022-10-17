@@ -8,7 +8,7 @@ import { ErrorAlert } from '../components/atoms/Alerts'
 import { ERROR } from '../utils/constants'
 import { useDataFetcher } from '../hooks/useDataFetcher'
 import { CreateButton } from '../components/atoms/Buttons'
-import { BaseLink } from '../components/Link'
+import { BaseLink } from '../components/atoms/Links'
 
 export default function Page() {
 	const {

@@ -13,7 +13,7 @@ import {
 	JOB_STATUS,
 	LIMIT,
 } from '../../utils/constants'
-import { BaseLink } from '../Link'
+import { BaseLink } from '../atoms/Links'
 
 export const UpcomingList = (props) => {
 	const {

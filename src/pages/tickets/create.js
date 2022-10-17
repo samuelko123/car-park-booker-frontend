@@ -18,7 +18,7 @@ import {
 	ReadOnlyField,
 } from '../../components/TextFields'
 import { AuthContext } from '../../components/AuthProvider'
-import { BaseLink } from '../../components/Link'
+import { BaseLink } from '../../components/atoms/Links'
 
 export default function Page() {
 	const router = useRouter()
