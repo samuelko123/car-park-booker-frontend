@@ -16,7 +16,7 @@ import {
 	HTTP_STATUS,
 } from '../../utils/constants'
 import { ErrorAlert } from '../../components/atoms/Alerts'
-import { DeleteDialog } from '../../components/Dialogs'
+import { DeleteDialog } from '../../components/molecules/Dialogs'
 import { useAjaxRequest } from '../../hooks/useAjaxRequest'
 import { useDataFetcher } from '../../hooks/useDataFetcher'
 
@@ -76,7 +76,7 @@ export default function Page() {
 						<DeleteDialog
 							open={openModal}
 							onConfirm={handleDelete}
-							handleClose={() => { setOpenModal(false) }}
+							onClose={() => { setOpenModal(false) }}
 						/>
 						{['id', 'booking_date', 'car_park', 'bay', 'number_plate', 'status'].map(field => {
 							let val = booking[field]

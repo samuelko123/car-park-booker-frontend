@@ -20,7 +20,7 @@ import {
 } from '../../components/atoms/Alerts'
 import { useAjaxRequest } from '../../hooks/useAjaxRequest'
 import { LogList } from '../../components/lists/LogList'
-import { DeleteDialog } from '../../components/Dialogs'
+import { DeleteDialog } from '../../components/molecules/Dialogs'
 import { useDataFetcher } from '../../hooks/useDataFetcher'
 import { TicketDetail } from '../../components/details/TicketDetail'
 
@@ -76,7 +76,7 @@ export default function Page() {
 					<DeleteDialog
 						open={openModal}
 						onConfirm={handleDelete}
-						handleClose={() => { setOpenModal(false) }}
+						onClose={() => { setOpenModal(false) }}
 					/>
 					<TicketDetail data={data} />
 				</>
