@@ -16,7 +16,7 @@ import {
 	InfoAlert,
 } from '../../components/atoms/Alerts'
 import { useAjaxRequest } from '../../hooks/useAjaxRequest'
-import { LogList } from '../../components/lists/LogList'
+import { LogList } from '../../components/organisms/LogList'
 import { DeleteDialog } from '../../components/molecules/Dialogs'
 import { useDataFetcher } from '../../hooks/useDataFetcher'
 import { TicketDetail } from '../../components/details/TicketDetail'
