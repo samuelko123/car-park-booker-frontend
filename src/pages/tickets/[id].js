@@ -19,7 +19,7 @@ import { useAjaxRequest } from '../../hooks/useAjaxRequest'
 import { LogList } from '../../components/organisms/LogList'
 import { DeleteDialog } from '../../components/molecules/Dialogs'
 import { useDataFetcher } from '../../hooks/useDataFetcher'
-import { TicketDetail } from '../../components/details/TicketDetail'
+import { TicketDetail } from '../../components/organisms/TicketDetail'
 import { BaseSpinner } from '../../components/atoms/Spinner'
 
 export default function Page() {
