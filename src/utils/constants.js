@@ -16,7 +16,7 @@ export const JOB_STATUS = {
 }
 
 export const LIMIT = {
-	AVAILABLE_DAYS_IN_ADVANCE: 21,
+	AVAILABLE_DAYS_IN_ADVANCE: 22,
 }
 
 export const ERROR = {

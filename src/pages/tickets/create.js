@@ -1,5 +1,4 @@
 import React from 'react'
-import moment from 'moment'
 import { useRouter } from 'next/router'
 import { BaseDropdown } from '../../components/molecules/Dropdowns'
 import {
@@ -19,26 +18,13 @@ import {
 } from '../../components/atoms/TextFields'
 import { AuthContext } from '../../components/organisms/AuthProvider'
 import { BaseLink } from '../../components/atoms/Links'
+import { useUpcomingWeekdays } from '../../hooks/useUpcomingWeekDays'
 
 export default function Page() {
 	const router = useRouter()
 
-	const dates = [...Array(LIMIT.AVAILABLE_DAYS_IN_ADVANCE).keys()].map((index) => {
-		const momentObj = moment().add(index + 1, 'days')
-
-		// skip weekend
-		const weekday = momentObj.weekday()
-		if ([0, 6].includes(weekday)) {
-			return null
-		}
-
-		return {
-			label: momentObj.format('DD/MM (ddd)'),
-			value: momentObj.format('YYYY-MM-DD'),
-		}
-	}).filter(elem => !!elem)
-
-	const [date, setDate] = React.useState(router.query?.date || dates[0].value)
+	const dates = useUpcomingWeekdays(LIMIT.AVAILABLE_DAYS_IN_ADVANCE)
+	const [focusedDate, setFocusedDate] = React.useState(router.query?.date || dates[0].value)
 	const [numPlate, setNumPlate] = React.useState('')
 	const [isLicPlateMissing, setIsLicPlateMissing] = React.useState(false)
 	const [errMsg, isLoading, sendRequest] = useAjaxRequest()
@@ -64,7 +50,7 @@ export default function Page() {
 			url: '/api/tickets',
 			method: HTTP_METHOD.POST,
 			data: {
-				booking_date: date,
+				booking_date: focusedDate,
 				number_plate: numPlate,
 			},
 		}
@@ -103,9 +89,14 @@ export default function Page() {
 			/>
 			<BaseDropdown
 				label='date'
-				value={date}
-				onChange={setDate}
-				options={dates}
+				value={focusedDate}
+				onChange={setFocusedDate}
+				options={dates.map(date => {
+					return {
+						label: date.format('DD/MM (ddd)'),
+						value: date.format('YYYY-MM-DD'),
+					}
+				})}
 			/>
 			<SubmitButton
 				onClick={handleSubmit}

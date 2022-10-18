@@ -9,6 +9,7 @@ import {
 	UpcomingTicketListItem,
 } from '../molecules/UpcomingListItem'
 import { useUpcomingData } from '../../hooks/useUpcomingData'
+import { LIMIT } from '../../utils/constants'
 
 export const UpcomingList = (props) => {
 	const {
@@ -16,7 +17,7 @@ export const UpcomingList = (props) => {
 		tickets,
 	} = props
 
-	const data = useUpcomingData(bookings, tickets)
+	const data = useUpcomingData(LIMIT.AVAILABLE_DAYS_IN_ADVANCE, bookings, tickets)
 
 	return (
 		<List>
