@@ -19,8 +19,9 @@ import { useAjaxRequest } from '../../hooks/useAjaxRequest'
 import { LogList } from '../../components/organisms/LogList'
 import { DeleteDialog } from '../../components/molecules/Dialogs'
 import { useDataFetcher } from '../../hooks/useDataFetcher'
-import { TicketDetail } from '../../components/organisms/TicketDetail'
 import { BaseSpinner } from '../../components/atoms/Spinner'
+import moment from 'moment'
+import { ReadOnlyField } from '../../components/atoms/TextFields'
 
 export default function Page() {
 	const router = useRouter()
@@ -78,7 +79,29 @@ export default function Page() {
 						onConfirm={handleDelete}
 						onClose={() => { setOpenModal(false) }}
 					/>
-					<TicketDetail data={data} />
+					{['booking_date', 'number_plate', 'status', 'run_count', 'last_run_at', 'created_at'].map(field => {
+						let val = data[field]
+						if (field === 'booking_date') {
+							val = val.substr(0, 10)
+						}
+
+						if (field === 'last_run_at' || field === 'created_at') {
+							val = moment(val).utc().format('DD/MM HH:mm')
+						}
+
+						if (field === 'run_count') {
+							val = val || 0
+						}
+
+						return (
+							<ReadOnlyField
+								key={field}
+								label={field}
+								value={val}
+								fullWidth
+							/>
+						)
+					})}
 				</>
 			}
 			{data?.status === 'Active' &&
