@@ -6,6 +6,7 @@ import { theme } from '../styles/theme'
 
 import {
 	CssBaseline,
+	Link,
 	Menu,
 	Stack,
 } from '@mui/material'
@@ -57,6 +58,19 @@ export const AppWrapper = (props) => {
 					}}
 					disableScrollLock={true}
 				>
+					<Link
+						href='https://www.buymeacoffee.com/samuelko123'
+						target='_blank'
+						rel='noreferrer'
+						sx={{
+							textDecoration: 'none',
+							color: 'inherit',
+						}}
+					>
+						<BaseMenuItem>
+							Buy me a coffee
+						</BaseMenuItem>
+					</Link>
 					<BaseLink href='/settings'>
 						<BaseMenuItem>
 							Settings
