@@ -57,6 +57,9 @@ export const AppWrapper = (props) => {
 						elevation: 2,
 					}}
 					disableScrollLock={true}
+					MenuListProps={{
+						disablePadding: true,
+					}}
 				>
 					<Link
 						href='https://www.buymeacoffee.com/samuelko123'

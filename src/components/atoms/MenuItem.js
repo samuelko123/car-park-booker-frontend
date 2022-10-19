@@ -12,6 +12,7 @@ export const BaseMenuItem = React.forwardRef((props, ref) => {
 			ref={ref}
 			{...otherProps}
 			divider
+			sx={{ padding: 2 }}
 		>
 			{children}
 		</MenuItem>
