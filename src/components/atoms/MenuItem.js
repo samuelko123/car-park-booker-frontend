@@ -11,7 +11,7 @@ export const BaseMenuItem = React.forwardRef((props, ref) => {
 		<MenuItem
 			ref={ref}
 			{...otherProps}
-			disableRipple
+			divider
 		>
 			{children}
 		</MenuItem>
