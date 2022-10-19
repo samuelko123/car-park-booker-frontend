@@ -19,6 +19,7 @@ export const useDataFetcher = (endpoint) => {
 		data,
 		error,
 		isValidating,
+		mutate,
 	} = useSWR(endpoint, fetcher, {
 		revalidateOnFocus: false,
 		revalidateOnMount: true,
@@ -27,8 +28,9 @@ export const useDataFetcher = (endpoint) => {
 	})
 
 	return {
-		data: data,
-		error: error,
+		data,
+		error,
 		isLoading: isValidating,
+		mutate,
 	}
 }

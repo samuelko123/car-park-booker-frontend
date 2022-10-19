@@ -11,16 +11,24 @@ import { BaseLink } from '../components/atoms/Links'
 import { AuthContext } from '../components/organisms/AuthProvider'
 import { useAjaxRequest } from '../hooks/useAjaxRequest'
 import { HTTP_METHOD } from '../utils/constants'
-import { useSWRConfig } from 'swr'
 import { BaseListItem } from '../components/atoms/ListItems'
 
 export default function Page() {
-	const { user } = React.useContext(AuthContext)
+	const {
+		user,
+		mutate,
+	} = React.useContext(AuthContext)
 	const [error, , sendRequest] = useAjaxRequest()
-	const { mutate } = useSWRConfig()
+	const [checked, setChecked] = React.useState(!!user.can_upgrade)
+
+	React.useEffect(() => {
+		setChecked(!!user.can_upgrade)
+	}, [user.can_upgrade])
 
 	const handleChange = async (e) => {
 		const val = e.target.checked
+		setChecked(val)
+
 		const request = {
 			url: '/api/users/can-upgrade',
 			method: HTTP_METHOD.PATCH,
@@ -35,7 +43,8 @@ export default function Page() {
 				can_upgrade: val,
 			}
 
-			mutate('/api/users/me', newUser, {
+			mutate(newUser, {
+				optimisticData: newUser,
 				revalidate: true,
 				populateCache: true,
 				rollbackOnError: true,
@@ -65,7 +74,7 @@ export default function Page() {
 						secondary='Attempts to upgrade your BOT 9 bookings to BOT 3 for every 30 minutes.'
 					/>
 					<Switch
-						checked={!!user.can_upgrade}
+						checked={checked}
 						onChange={handleChange}
 					/>
 				</BaseListItem>

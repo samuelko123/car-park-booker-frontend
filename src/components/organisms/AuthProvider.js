@@ -13,14 +13,16 @@ export const AuthProvider = (props) => {
 		data: user,
 		error,
 		isLoading,
+		mutate,
 	} = useDataFetcher(endpoint)
 
 	return (
 		<AuthContext.Provider
 			value={{
-				user: user,
-				error: error,
+				user,
+				error,
 				loading: isLoading,
+				mutate,
 			}}
 		>
 			{children}
