@@ -29,12 +29,7 @@ export default function Page() {
 		}
 
 		await sendRequest(request, () => {
-			mutate('/api/users/me', undefined, {
-				optimisticData: {
-					...user,
-					can_upgrade: e.target.checked,
-				},
-			})
+			mutate('/api/users/me')
 		})
 	}
 
