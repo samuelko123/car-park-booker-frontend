@@ -67,16 +67,19 @@ export const AppWrapper = (props) => {
 							color: 'inherit',
 						}}
 					>
-						<BaseMenuItem>
+						<BaseMenuItem onClick={() => setMenuOpen(false)}>
 							Buy me a coffee
 						</BaseMenuItem>
 					</Link>
 					<BaseLink href='/settings'>
-						<BaseMenuItem>
+						<BaseMenuItem onClick={() => setMenuOpen(false)}>
 							Settings
 						</BaseMenuItem>
 					</BaseLink>
-					<BaseMenuItem onClick={logout}>
+					<BaseMenuItem onClick={() => {
+						logout()
+						setMenuOpen(false)
+					}}>
 						Logout
 					</BaseMenuItem>
 				</Menu>
