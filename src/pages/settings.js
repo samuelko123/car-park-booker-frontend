@@ -36,6 +36,7 @@ export default function Page() {
 			}
 
 			mutate('/api/users/me', newUser, {
+				optimisticData: newUser,
 				revalidate: true,
 				populateCache: true,
 				rollbackOnError: true,
