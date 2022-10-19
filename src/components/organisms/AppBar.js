@@ -1,14 +1,13 @@
 import React from 'react'
-import { Tooltip } from '@mui/material'
 import { AuthContext } from './AuthProvider'
 import { BaseAppBar } from '../atoms/AppBar'
 import { BrandHeader } from '../molecules/BrandHeader'
-import { LogoutButton } from '../atoms/Buttons'
+import { MenuButton } from '../atoms/Buttons'
 
 export const AppBar = (props) => {
 	const {
 		title,
-		logout,
+		onClickMenuButton,
 	} = props
 
 	const { user } = React.useContext(AuthContext)
@@ -20,12 +19,10 @@ export const AppBar = (props) => {
 				title={title}
 			/>
 			{user &&
-				<Tooltip title='Logout'>
-					<LogoutButton
-						onClick={logout}
-						color='inherit'
-					/>
-				</Tooltip>
+				<MenuButton
+					onClick={onClickMenuButton}
+					color='inherit'
+				/>
 			}
 		</BaseAppBar>
 

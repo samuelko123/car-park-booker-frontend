@@ -6,16 +6,21 @@ import { theme } from '../styles/theme'
 
 import {
 	CssBaseline,
+	Menu,
 	Stack,
 } from '@mui/material'
-import { AppBar } from '../components/organisms/AppBar'
 import { AuthGuard } from '../components/organisms/AuthGuard'
 import { AuthProvider } from '../components/organisms/AuthProvider'
 import { useLogout } from '../hooks/useLogout'
+import { BaseMenuItem } from '../components/atoms/MenuItem'
+import { AppBar } from '../components/organisms/AppBar'
+import { BaseLink } from '../components/atoms/Links'
 
 export const AppWrapper = (props) => {
 	const { children } = props
 
+	const [anchorEl, setAnchorEl] = React.useState(null)
+	const [menuOpen, setMenuOpen] = React.useState(false)
 	const { logout } = useLogout('/api/users/logout')
 
 	return (
@@ -30,8 +35,37 @@ export const AppWrapper = (props) => {
 				<CssBaseline />
 				<AppBar
 					title={process.env.NEXT_PUBLIC_APP_TITLE}
-					logout={logout}
+					onClickMenuButton={(e) => {
+						setAnchorEl(e.currentTarget)
+						setMenuOpen(true)
+					}}
 				/>
+				<Menu
+					open={menuOpen}
+					onClose={() => setMenuOpen(false)}
+					anchorEl={anchorEl}
+					anchorOrigin={{
+						vertical: 'bottom',
+						horizontal: 'right',
+					}}
+					transformOrigin={{
+						vertical: 'top',
+						horizontal: 'right',
+					}}
+					PaperProps={{
+						elevation: 2,
+					}}
+					disableScrollLock={true}
+				>
+					<BaseLink href='/settings'>
+						<BaseMenuItem>
+							Settings
+						</BaseMenuItem>
+					</BaseLink>
+					<BaseMenuItem onClick={logout}>
+						Logout
+					</BaseMenuItem>
+				</Menu>
 				<Stack
 					component='main'
 					gap={2}

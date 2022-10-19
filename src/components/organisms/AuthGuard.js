@@ -25,7 +25,7 @@ export const AuthGuard = (props) => {
 		loading: loginLoading,
 	} = useLogin(endpoint)
 
-	if (authLoading) {
+	if (authLoading && !user) {
 		return <BaseSpinner />
 	}
 

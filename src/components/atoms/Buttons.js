@@ -4,6 +4,7 @@ import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew'
 import DeleteIcon from '@mui/icons-material/Delete'
 import AddIcon from '@mui/icons-material/Add'
 import LogoutIcon from '@mui/icons-material/Logout'
+import MenuIcon from '@mui/icons-material/Menu'
 import { IconButton } from '@mui/material'
 
 const BaseButton = React.forwardRef((props, ref) => {
@@ -111,6 +112,17 @@ export const LogoutButton = React.forwardRef((props, ref) => {
 			{...props}
 		>
 			<LogoutIcon />
+		</IconButton>
+	)
+})
+
+export const MenuButton = React.forwardRef((props, ref) => {
+	return (
+		<IconButton
+			ref={ref}
+			{...props}
+		>
+			<MenuIcon />
 		</IconButton>
 	)
 })
