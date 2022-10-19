@@ -20,16 +20,26 @@ export default function Page() {
 	const { mutate } = useSWRConfig()
 
 	const handleChange = async (e) => {
+		const val = e.target.checked
 		const request = {
 			url: '/api/users/can-upgrade',
 			method: HTTP_METHOD.PATCH,
 			data: {
-				can_upgrade: e.target.checked,
+				can_upgrade: val,
 			},
 		}
 
 		await sendRequest(request, () => {
-			mutate('/api/users/me')
+			const newUser = {
+				...user,
+				can_upgrade: val,
+			}
+
+			mutate('/api/users/me', newUser, {
+				revalidate: true,
+				populateCache: true,
+				rollbackOnError: true,
+			})
 		})
 	}
 
