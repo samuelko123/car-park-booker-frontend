@@ -18,6 +18,8 @@ const BaseButton = React.forwardRef((props, ref) => {
 })
 
 export const BackButton = React.forwardRef((props, ref) => {
+	const [loading, setLoading] = React.useState(false)
+
 	return (
 		<BaseButton
 			ref={ref}
@@ -25,6 +27,8 @@ export const BackButton = React.forwardRef((props, ref) => {
 			variant='outlined'
 			size='small'
 			startIcon={<ArrowBackIosNewIcon />}
+			loading={loading}
+			onClick={() => setLoading(true)}
 		>
 			Back
 		</BaseButton>
