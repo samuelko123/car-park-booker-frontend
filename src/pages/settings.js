@@ -31,7 +31,7 @@ export default function Page() {
 					</BaseListSubheader>
 					<ListItemWithSwitch
 						primary='Upgrade to BOT 3'
-						secondary='Attempts to upgrade your BOT 9 bookings to BOT 3 for every 30 minutes.'
+						secondary='Attempt to upgrade your BOT 9 bookings to BOT 3 for every 30 minutes.'
 						checked={!!user.can_upgrade}
 						onChange={async (checked) => axios.patch('/api/users/can-upgrade', { can_upgrade: checked })}
 					/>
@@ -42,7 +42,7 @@ export default function Page() {
 					</BaseListSubheader>
 					<ListItemWithSwitch
 						primary='Upgrade Success'
-						secondary='Notifys when successfully upgraded from BOT 9 to BOT 3'
+						secondary='Notify when successfully upgraded from BOT 9 to BOT 3'
 						checked={!!user.can_notify_upgrade}
 						onChange={async (checked) => axios.patch('/api/users/can-notify-upgrade', { can_notify_upgrade: checked })}
 					/>
