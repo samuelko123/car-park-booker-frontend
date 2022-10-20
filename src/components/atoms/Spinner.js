@@ -1,13 +1,11 @@
 import React from 'react'
 import { CircularProgress } from '@mui/material'
 
-export const BaseSpinner = (props) => {
-	const {
-		color,
-	} = props
+export const BaseSpinner = React.forwardRef((props, ref) => {
 	return (
 		<CircularProgress
-			color={color}
+			ref={ref}
+			{...props}
 		/>
 	)
-}
+})
