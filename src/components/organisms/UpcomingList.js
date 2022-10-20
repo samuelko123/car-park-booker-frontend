@@ -7,7 +7,7 @@ import {
 	UpcomingBlankListItem,
 	UpcomingBookingListItem,
 	UpcomingTicketListItem,
-} from '../molecules/UpcomingListItem'
+} from '../organisms/UpcomingListItem'
 import { useUpcomingData } from '../../hooks/useUpcomingData'
 import { LIMIT } from '../../utils/constants'
 

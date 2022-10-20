@@ -3,7 +3,7 @@ import {
 	Divider,
 	List,
 } from '@mui/material'
-import { LogListItem } from '../molecules/LogListItem'
+import { LogListItem } from '../organisms/LogListItem'
 
 export const LogList = (props) => {
 	const {

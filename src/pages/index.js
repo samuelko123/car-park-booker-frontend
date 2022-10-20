@@ -1,6 +1,6 @@
 import React from 'react'
 import { Stack } from '@mui/material'
-import { UpcomingList } from '../components/lists/UpcomingList'
+import { UpcomingList } from '../components/organisms/UpcomingList'
 import { ErrorAlert } from '../components/atoms/Alerts'
 import { ERROR } from '../utils/constants'
 import { useDataFetcher } from '../hooks/useDataFetcher'
