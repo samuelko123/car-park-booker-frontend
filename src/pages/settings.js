@@ -1,11 +1,15 @@
 import React from 'react'
-import { List } from '@mui/material'
+import {
+	List,
+	Stack,
+} from '@mui/material'
 import axios from 'axios'
 import { BackButton } from '../components/atoms/Buttons'
 import { BaseHeader } from '../components/atoms/Header'
 import { BaseLink } from '../components/atoms/Links'
 import { AuthContext } from '../components/organisms/AuthProvider'
 import { ListItemWithSwitch } from '../components/molecules/ListItemWithSwitch'
+import { BaseListSubheader } from '../components/atoms/ListSubheader'
 
 export default function Page() {
 	const {
@@ -20,14 +24,30 @@ export default function Page() {
 			<BaseHeader>
 				Settings
 			</BaseHeader>
-			<List>
-				<ListItemWithSwitch
-					primary='Upgrade to BOT 3'
-					secondary='Attempts to upgrade your BOT 9 bookings to BOT 3 for every 30 minutes.'
-					checked={!!user.can_upgrade}
-					onChange={async (checked) => axios.patch('/api/users/can-upgrade', { can_upgrade: checked })}
-				/>
-			</List>
+			<Stack gap={1}>
+				<List>
+					<BaseListSubheader>
+						General
+					</BaseListSubheader>
+					<ListItemWithSwitch
+						primary='Upgrade to BOT 3'
+						secondary='Attempts to upgrade your BOT 9 bookings to BOT 3 for every 30 minutes.'
+						checked={!!user.can_upgrade}
+						onChange={async (checked) => axios.patch('/api/users/can-upgrade', { can_upgrade: checked })}
+					/>
+				</List>
+				<List>
+					<BaseListSubheader>
+						Email Notifications
+					</BaseListSubheader>
+					<ListItemWithSwitch
+						primary='Upgrade Success'
+						secondary='Notifys when successfully upgraded from BOT 9 to BOT 3'
+						checked={!!user.can_notify_upgrade}
+						onChange={async (checked) => axios.patch('/api/users/can-notify-upgrade', { can_notify_upgrade: checked })}
+					/>
+				</List>
+			</Stack>
 		</>
 	)
 }
