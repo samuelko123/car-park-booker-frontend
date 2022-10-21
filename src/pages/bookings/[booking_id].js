@@ -17,6 +17,7 @@ import { DeleteDialog } from '../../components/molecules/Dialogs'
 import { useAjaxRequest } from '../../hooks/useAjaxRequest'
 import { useDataFetcher } from '../../hooks/useDataFetcher'
 import { BaseSpinner } from '../../components/atoms/Spinner'
+import { BaseHeader } from '../../components/atoms/Header'
 
 export default function Page() {
 	const router = useRouter()
@@ -69,15 +70,7 @@ export default function Page() {
 						gap={3}
 						sx={{ width: '100%' }}
 					>
-						<DeleteButton
-							variant='outlined'
-							onClick={() => { setOpenModal(true) }}
-						/>
-						<DeleteDialog
-							open={openModal}
-							onConfirm={handleDelete}
-							onClose={() => { setOpenModal(false) }}
-						/>
+						<BaseHeader>Booking Details</BaseHeader>
 						{['id', 'booking_date', 'car_park', 'bay', 'number_plate', 'status'].map(field => {
 							let val = booking[field]
 							if (field === 'booking_date') {
@@ -92,6 +85,15 @@ export default function Page() {
 								/>
 							)
 						})}
+						<DeleteButton
+							variant='outlined'
+							onClick={() => { setOpenModal(true) }}
+						/>
+						<DeleteDialog
+							open={openModal}
+							onConfirm={handleDelete}
+							onClose={() => { setOpenModal(false) }}
+						/>
 					</Stack>
 				</>
 			}
