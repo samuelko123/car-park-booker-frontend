@@ -27,7 +27,10 @@ export const AuthGuard = (props) => {
 	const isClientSide = (typeof window !== 'undefined')
 
 	const router = useRouter()
-	if (router.pathname === '/404') {
+	if (
+		router.pathname === '/404' ||
+		router.pathname === '/how-it-works'
+	) {
 		return children
 	}
 

@@ -6,23 +6,20 @@ import { theme } from '../styles/theme'
 
 import {
 	CssBaseline,
-	Link,
-	Menu,
 	Stack,
 } from '@mui/material'
 import { AuthGuard } from '../components/organisms/AuthGuard'
 import { AuthProvider } from '../components/organisms/AuthProvider'
-import { useLogout } from '../hooks/useLogout'
-import { BaseMenuItem } from '../components/atoms/MenuItem'
-import { AppBar } from '../components/organisms/AppBar'
-import { BaseLink } from '../components/atoms/Links'
+import { BaseAppBar } from '../components/atoms/AppBar'
+import { BrandHeader } from '../components/molecules/BrandHeader'
+import { MenuButton } from '../components/atoms/Buttons'
+import { MainMenu } from '../components/organisms/MainMenu'
 
 export const AppWrapper = (props) => {
 	const { children } = props
 
 	const [anchorEl, setAnchorEl] = React.useState(null)
 	const [menuOpen, setMenuOpen] = React.useState(false)
-	const { logout } = useLogout('/api/users/logout')
 
 	return (
 		<ThemeProvider theme={theme}>
@@ -34,58 +31,24 @@ export const AppWrapper = (props) => {
 					<link rel='icon' href='/favicon.ico' />
 				</Head>
 				<CssBaseline />
-				<AppBar
-					title={process.env.NEXT_PUBLIC_APP_TITLE}
-					onClickMenuButton={(e) => {
-						setAnchorEl(e.currentTarget)
-						setMenuOpen(true)
-					}}
-				/>
-				<Menu
+				<BaseAppBar>
+					<BrandHeader
+						href='/'
+						title={process.env.NEXT_PUBLIC_APP_TITLE}
+					/>
+					<MenuButton
+						onClick={(e) => {
+							setAnchorEl(e.currentTarget)
+							setMenuOpen(true)
+						}}
+						color='inherit'
+					/>
+				</BaseAppBar>
+				<MainMenu
 					open={menuOpen}
 					onClose={() => setMenuOpen(false)}
 					anchorEl={anchorEl}
-					anchorOrigin={{
-						vertical: 'bottom',
-						horizontal: 'right',
-					}}
-					transformOrigin={{
-						vertical: 'top',
-						horizontal: 'right',
-					}}
-					PaperProps={{
-						elevation: 2,
-					}}
-					disableScrollLock={true}
-					MenuListProps={{
-						disablePadding: true,
-					}}
-				>
-					<Link
-						href='https://www.buymeacoffee.com/samuelko123'
-						target='_blank'
-						rel='noreferrer'
-						sx={{
-							textDecoration: 'none',
-							color: 'inherit',
-						}}
-					>
-						<BaseMenuItem onClick={() => setMenuOpen(false)}>
-							Buy me a coffee
-						</BaseMenuItem>
-					</Link>
-					<BaseLink href='/settings'>
-						<BaseMenuItem onClick={() => setMenuOpen(false)}>
-							Settings
-						</BaseMenuItem>
-					</BaseLink>
-					<BaseMenuItem onClick={() => {
-						logout()
-						setMenuOpen(false)
-					}}>
-						Logout
-					</BaseMenuItem>
-				</Menu>
+				/>
 				<Stack
 					component='main'
 					gap={2}
