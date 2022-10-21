@@ -1,9 +1,13 @@
 import React from 'react'
-import { MenuItem } from '@mui/material'
+import {
+	MenuItem,
+	Stack,
+} from '@mui/material'
 
 export const BaseMenuItem = React.forwardRef((props, ref) => {
 	const {
 		children,
+		startIcon,
 		...otherProps
 	} = props
 
@@ -14,7 +18,10 @@ export const BaseMenuItem = React.forwardRef((props, ref) => {
 			divider
 			sx={{ padding: 2 }}
 		>
-			{children}
+			<Stack flexDirection='row' gap={1}>
+				{startIcon || null}
+				{children}
+			</Stack>
 		</MenuItem>
 	)
 })

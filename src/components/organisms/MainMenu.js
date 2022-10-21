@@ -7,6 +7,11 @@ import { useLogout } from '../../hooks/useLogout'
 import { BaseLink } from '../atoms/Links'
 import { BaseMenuItem } from '../atoms/MenuItem'
 import { AuthContext } from './AuthProvider'
+import HelpOutlineIcon from '@mui/icons-material/HelpOutline'
+import LoginIcon from '@mui/icons-material/Login'
+import LocalCafeIcon from '@mui/icons-material/LocalCafe'
+import SettingsIcon from '@mui/icons-material/Settings'
+import LogoutIcon from '@mui/icons-material/Logout'
 
 export const MainMenu = (props) => {
 	const {
@@ -40,18 +45,26 @@ export const MainMenu = (props) => {
 			}}
 		>
 			<BaseLink href='/how-it-works'>
-				<BaseMenuItem onClick={onClose}>
-					How it works
+				<BaseMenuItem
+					onClick={onClose}
+					startIcon={<HelpOutlineIcon color='primary' />}
+				>
+					How It Works
 				</BaseMenuItem>
 			</BaseLink>
-			{!user &&
+			{
+				!user &&
 				<BaseLink href='/login'>
-					<BaseMenuItem onClick={onClose}>
+					<BaseMenuItem
+						onClick={onClose}
+						startIcon={<LoginIcon color='primary' />}
+					>
 						Login
 					</BaseMenuItem>
 				</BaseLink>
 			}
-			{user &&
+			{
+				user &&
 				[
 					<Link
 						key='buy-me-a-coffee'
@@ -63,7 +76,10 @@ export const MainMenu = (props) => {
 							color: 'inherit',
 						}}
 					>
-						<BaseMenuItem onClick={onClose}>
+						<BaseMenuItem
+							onClick={onClose}
+							startIcon={<LocalCafeIcon color='primary' />}
+						>
 							Buy me a coffee
 						</BaseMenuItem>
 					</Link>
@@ -72,13 +88,17 @@ export const MainMenu = (props) => {
 						key='settings'
 						href='/settings'
 					>
-						<BaseMenuItem onClick={onClose}>
+						<BaseMenuItem
+							onClick={onClose}
+							startIcon={<SettingsIcon color='primary' />}
+						>
 							Settings
 						</BaseMenuItem>
 					</BaseLink>
 					,
 					<BaseMenuItem
 						key='logout'
+						startIcon={<LogoutIcon color='primary' />}
 						onClick={() => {
 							logout()
 							onClose()
