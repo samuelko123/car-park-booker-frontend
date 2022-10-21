@@ -34,6 +34,11 @@ export const AuthGuard = (props) => {
 		return children
 	}
 
+	if (router.pathname === '/login' && user) {
+		router.push('/')
+		return <BaseSpinner />
+	}
+
 	if (authLoading && !user) {
 		return <BaseSpinner />
 	}
