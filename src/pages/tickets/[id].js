@@ -19,6 +19,7 @@ import { useDataFetcher } from '../../hooks/useDataFetcher'
 import { BaseSpinner } from '../../components/atoms/Spinner'
 import moment from 'moment'
 import { ReadOnlyField } from '../../components/atoms/TextFields'
+import { BaseHeader } from '../../components/atoms/Header'
 
 export default function Page() {
 	const router = useRouter()
@@ -67,15 +68,7 @@ export default function Page() {
 			}
 			{data &&
 				<>
-					<DeleteButton
-						variant='outlined'
-						onClick={() => setOpenModal(true)}
-					/>
-					<DeleteDialog
-						open={openModal}
-						onConfirm={handleDelete}
-						onClose={() => { setOpenModal(false) }}
-					/>
+					<BaseHeader>Ticket Details</BaseHeader>
 					{['booking_date', 'number_plate', 'status', 'run_count', 'last_run_at', 'created_at'].map(field => {
 						let val = data[field]
 						if (field === 'booking_date') {
@@ -99,10 +92,23 @@ export default function Page() {
 							/>
 						)
 					})}
+					<DeleteButton
+						variant='outlined'
+						onClick={() => setOpenModal(true)}
+					/>
+					<DeleteDialog
+						open={openModal}
+						onConfirm={handleDelete}
+						onClose={() => { setOpenModal(false) }}
+					/>
 				</>
 			}
+
 			{data?.logs && data.logs.length > 0 &&
-				<LogList data={data?.logs} />
+				<>
+					<BaseHeader>System Logs</BaseHeader>
+					<LogList data={data.logs} />
+				</>
 			}
 		</Stack>
 	)
