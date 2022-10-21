@@ -12,7 +12,7 @@ export const LogListItem = (props) => {
 	return (
 		<BaseListItem>
 			<ListItemText
-				primary={moment(timestamp).format('DD/MM HH:mm')}
+				primary={moment(timestamp).format('HH:mm:ss')}
 				sx={{ flex: 3 }}
 			/>
 			<ListItemText
