@@ -45,17 +45,16 @@ export const MainMenu = (props) => {
 				</BaseMenuItem>
 			</BaseLink>
 			{!user &&
-				<>
-					<BaseLink href='/login'>
-						<BaseMenuItem onClick={onClose}>
-							Login
-						</BaseMenuItem>
-					</BaseLink>
-				</>
+				<BaseLink href='/login'>
+					<BaseMenuItem onClick={onClose}>
+						Login
+					</BaseMenuItem>
+				</BaseLink>
 			}
 			{user &&
-				<>
+				[
 					<Link
+						key='buy-me-a-coffee'
 						href='https://www.buymeacoffee.com/samuelko123'
 						target='_blank'
 						rel='noreferrer'
@@ -68,18 +67,26 @@ export const MainMenu = (props) => {
 							Buy me a coffee
 						</BaseMenuItem>
 					</Link>
-					<BaseLink href='/settings'>
+					,
+					<BaseLink
+						key='settings'
+						href='/settings'
+					>
 						<BaseMenuItem onClick={onClose}>
 							Settings
 						</BaseMenuItem>
 					</BaseLink>
-					<BaseMenuItem onClick={() => {
-						logout()
-						onClose()
-					}}>
+					,
+					<BaseMenuItem
+						key='logout'
+						onClick={() => {
+							logout()
+							onClose()
+						}}
+					>
 						Logout
-					</BaseMenuItem>
-				</>
+					</BaseMenuItem>,
+				]
 			}
 		</Menu>
 	)
