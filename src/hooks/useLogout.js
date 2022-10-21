@@ -13,7 +13,7 @@ export const useLogout = (endpoint) => {
 		}
 
 		await sendRequest(request, () => {
-			router.push('/')
+			router.reload()
 		})
 	}
 
