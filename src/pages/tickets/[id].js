@@ -11,10 +11,7 @@ import {
 	HTTP_METHOD,
 	HTTP_STATUS,
 } from '../../utils/constants'
-import {
-	ErrorAlert,
-	InfoAlert,
-} from '../../components/atoms/Alerts'
+import { ErrorAlert } from '../../components/atoms/Alerts'
 import { useAjaxRequest } from '../../hooks/useAjaxRequest'
 import { LogList } from '../../components/organisms/LogList'
 import { DeleteDialog } from '../../components/molecules/Dialogs'
@@ -103,11 +100,6 @@ export default function Page() {
 						)
 					})}
 				</>
-			}
-			{data?.status === 'Active' &&
-				<InfoAlert>
-					It will keep trying every 30 minutes.
-				</InfoAlert>
 			}
 			{data?.logs && data.logs.length > 0 &&
 				<LogList data={data?.logs} />

@@ -31,7 +31,7 @@ export default function Page() {
 					</BaseListSubheader>
 					<ListItemWithSwitch
 						primary='Upgrade to BOT 3'
-						secondary='Attempt to upgrade your BOT 9 bookings to BOT 3 for every 30 minutes.'
+						secondary='Attempt to upgrade your BOT 9 bookings to BOT 3 every 30 minutes.'
 						checked={!!user.can_upgrade}
 						onChange={async (checked) => axios.patch('/api/users/can-upgrade', { can_upgrade: checked })}
 					/>
