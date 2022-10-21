@@ -25,11 +25,14 @@ export default function Page() {
 	const [numPlate, setNumPlate] = React.useState('')
 	const [isLicPlateMissing, setIsLicPlateMissing] = React.useState(false)
 	const [errMsg, isLoading, sendRequest] = useAjaxRequest()
-	const { user } = React.useContext(AuthContext)
+	const {
+		user,
+		mutate,
+	} = React.useContext(AuthContext)
 
 	React.useEffect(() => {
 		setNumPlate(user?.number_plate || '')
-	}, [user])
+	}, [user, mutate])
 
 	const handleLicPlateChange = (val) => {
 		setNumPlate(val.toUpperCase())
@@ -53,6 +56,7 @@ export default function Page() {
 		}
 
 		await sendRequest(request, () => {
+			mutate()
 			router.push('/')
 		})
 	}
