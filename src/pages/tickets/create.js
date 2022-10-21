@@ -1,10 +1,7 @@
 import React from 'react'
 import { useRouter } from 'next/router'
 import { BaseDropdown } from '../../components/molecules/Dropdowns'
-import {
-	BackButton,
-	SubmitButton,
-} from '../../components/atoms/Buttons'
+import { SubmitButton } from '../../components/atoms/Buttons'
 import {
 	HTTP_METHOD,
 	LIMIT,
@@ -17,8 +14,8 @@ import {
 	ReadOnlyField,
 } from '../../components/atoms/TextFields'
 import { AuthContext } from '../../components/organisms/AuthProvider'
-import { BaseLink } from '../../components/atoms/Links'
 import { useUpcomingWeekdays } from '../../hooks/useUpcomingWeekDays'
+import { BackButton } from '../../components/molecules/BackButton'
 
 export default function Page() {
 	const router = useRouter()
@@ -65,9 +62,7 @@ export default function Page() {
 			gap={2}
 			component='form'
 		>
-			<BaseLink href='/'>
-				<BackButton />
-			</BaseLink>
+			<BackButton href='/' />
 			{errMsg &&
 				<ErrorAlert>
 					{errMsg}

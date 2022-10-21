@@ -1,15 +1,12 @@
 import React from 'react'
-import { BackButton } from '../components/atoms/Buttons'
+import { BackButton } from '../components/molecules/BackButton'
 import { BaseHeader } from '../components/atoms/Header'
-import { BaseLink } from '../components/atoms/Links'
 import { BaseParagraph } from '../components/atoms/Paragraph'
 
 export default function Page() {
 	return (
 		<>
-			<BaseLink href='/'>
-				<BackButton />
-			</BaseLink>
+			<BackButton href='/' />
 			<BaseHeader>
 				How It Works
 			</BaseHeader>

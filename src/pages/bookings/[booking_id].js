@@ -1,10 +1,6 @@
 import React from 'react'
 import { useRouter } from 'next/router'
-import {
-	BackButton,
-	DeleteButton,
-} from '../../components/atoms/Buttons'
-import { BaseLink } from '../../components/atoms/Links'
+import { DeleteButton } from '../../components/atoms/Buttons'
 import { ReadOnlyField } from '../../components/atoms/TextFields'
 import { Stack } from '@mui/material'
 import {
@@ -18,6 +14,7 @@ import { useAjaxRequest } from '../../hooks/useAjaxRequest'
 import { useDataFetcher } from '../../hooks/useDataFetcher'
 import { BaseSpinner } from '../../components/atoms/Spinner'
 import { BaseHeader } from '../../components/atoms/Header'
+import { BackButton } from '../../components/molecules/BackButton'
 
 export default function Page() {
 	const router = useRouter()
@@ -47,9 +44,7 @@ export default function Page() {
 	return (
 		<Stack gap={2}>
 			<Stack flexDirection='row' gap={2}>
-				<BaseLink href='/'>
-					<BackButton />
-				</BaseLink>
+				<BackButton href='/' />
 				{isLoading &&
 					<BaseSpinner />
 				}

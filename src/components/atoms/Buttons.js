@@ -1,37 +1,18 @@
 import React from 'react'
 import LoadingButton from '@mui/lab/LoadingButton'
-import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew'
 import DeleteIcon from '@mui/icons-material/Delete'
 import AddIcon from '@mui/icons-material/Add'
 import LogoutIcon from '@mui/icons-material/Logout'
 import MenuIcon from '@mui/icons-material/Menu'
 import { IconButton } from '@mui/material'
 
-const BaseButton = React.forwardRef((props, ref) => {
+export const BaseButton = React.forwardRef((props, ref) => {
 	return (
 		<LoadingButton
 			ref={ref}
 			{...props}
 			sx={{ alignSelf: 'flex-start' }}
 		/>
-	)
-})
-
-export const BackButton = React.forwardRef((props, ref) => {
-	const [loading, setLoading] = React.useState(false)
-
-	return (
-		<BaseButton
-			ref={ref}
-			{...props}
-			variant='outlined'
-			size='small'
-			startIcon={<ArrowBackIosNewIcon />}
-			loading={loading}
-			onClick={() => setLoading(true)}
-		>
-			Back
-		</BaseButton>
 	)
 })
 

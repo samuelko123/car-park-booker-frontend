@@ -4,9 +4,8 @@ import {
 	Stack,
 } from '@mui/material'
 import axios from 'axios'
-import { BackButton } from '../components/atoms/Buttons'
+import { BackButton } from '../components/molecules/BackButton'
 import { BaseHeader } from '../components/atoms/Header'
-import { BaseLink } from '../components/atoms/Links'
 import { AuthContext } from '../components/organisms/AuthProvider'
 import { ListItemWithSwitch } from '../components/molecules/ListItemWithSwitch'
 import { BaseListSubheader } from '../components/atoms/ListSubheader'
@@ -18,9 +17,7 @@ export default function Page() {
 
 	return (
 		<>
-			<BaseLink href='/'>
-				<BackButton />
-			</BaseLink>
+			<BackButton href='/' />
 			<BaseHeader>
 				Settings
 			</BaseHeader>
