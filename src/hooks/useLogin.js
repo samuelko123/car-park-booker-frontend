@@ -1,11 +1,12 @@
-import { useRouter } from 'next/router'
+import React from 'react'
 import { useAjaxRequest } from './useAjaxRequest'
 import { HTTP_METHOD } from '../utils/constants'
+import { AuthContext } from '../components/organisms/AuthProvider'
 
 export const useLogin = (endpoint) => {
 	const [error, loading, sendRequest] = useAjaxRequest()
 
-	const router = useRouter()
+	const { mutate } = React.useContext(AuthContext)
 	const handleSubmit = async (username, password) => {
 		const request = {
 			url: endpoint,
@@ -17,7 +18,7 @@ export const useLogin = (endpoint) => {
 		}
 
 		await sendRequest(request, () => {
-			router.reload()
+			mutate()
 		})
 	}
 
