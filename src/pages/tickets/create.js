@@ -21,7 +21,7 @@ export default function Page() {
 	const router = useRouter()
 
 	const dates = useUpcomingWeekdays(LIMIT.AVAILABLE_DAYS_IN_ADVANCE)
-	const [focusedDate, setFocusedDate] = React.useState(router.query?.date || dates[0].value)
+	const [focusedDate, setFocusedDate] = React.useState(router.query?.date || dates[0].format('YYYY-MM-DD'))
 	const [numPlate, setNumPlate] = React.useState('')
 	const [isLicPlateMissing, setIsLicPlateMissing] = React.useState(false)
 	const [errMsg, isLoading, sendRequest] = useAjaxRequest()
