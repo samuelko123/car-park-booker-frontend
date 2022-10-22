@@ -34,7 +34,7 @@ export const LogList = (props) => {
 						return (
 							<Accordion key={date}>
 								<AccordionSummary expandIcon={<ExpandMoreIcon />}>
-									<Typography>{date}</Typography>
+									<Typography>{date} ({logs[date].length})</Typography>
 								</AccordionSummary>
 								<AccordionDetails>
 									<List>
