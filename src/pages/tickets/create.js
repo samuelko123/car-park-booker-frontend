@@ -16,6 +16,7 @@ import {
 import { AuthContext } from '../../components/organisms/AuthProvider'
 import { useUpcomingWeekdays } from '../../hooks/useUpcomingWeekDays'
 import { BackButton } from '../../components/molecules/BackButton'
+import { BaseHeader } from '../../components/atoms/Header'
 
 export default function Page() {
 	const router = useRouter()
@@ -67,6 +68,7 @@ export default function Page() {
 			component='form'
 		>
 			<BackButton href='/' />
+			<BaseHeader>Create Ticket</BaseHeader>
 			{errMsg &&
 				<ErrorAlert>
 					{errMsg}

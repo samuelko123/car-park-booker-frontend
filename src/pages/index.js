@@ -7,6 +7,7 @@ import { useDataFetcher } from '../hooks/useDataFetcher'
 import { CreateButton } from '../components/atoms/Buttons'
 import { BaseLink } from '../components/atoms/Links'
 import { BaseSpinner } from '../components/atoms/Spinner'
+import { BaseHeader } from '../components/atoms/Header'
 
 export default function Page() {
 	const {
@@ -40,6 +41,7 @@ export default function Page() {
 					{errTickets?.message || ERROR.UNKNOWN}
 				</ErrorAlert>
 			}
+			<BaseHeader>Upcoming</BaseHeader>
 			<Stack flexDirection='row' gap={2}>
 				<BaseLink href='/tickets/create'>
 					<CreateButton>
